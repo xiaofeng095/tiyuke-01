@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="school/main/public :: #public_head">
+</head>
+<body>
+<!--头部-->
+<header class="publicHeader" th:replace="school/main/public :: #public_header">
+</header>
+<!--时间-->
+<section class="publicTime" th:replace="school/main/public :: #public_time">
+</section>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="left" th:replace="school/main/public :: #public_left(activeUri='teacher')">
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>教师管理页面 >> 教师信息修改页面</span>
+        </div>
+        <div class="providerAdd">
+            <form id="updateForm" th:action="@{/teacher_update}" method="post">
+                <input type="hidden" name="_method" value="put">
+                <!--div的class 为error是验证错误，ok是验证成功-->
+
+                <div>
+                    <label for="realName">真实姓名：</label>
+                    <input type="text" name="realName" id="realName"  th:value="${teacherInfo.realName}" required/>
+                    <input type="hidden" name="teacherId" th:value="${teacherInfo.teacherId}">
+                    <span >*</span>
+                </div>
+                <div>
+                    <label for="specialty">教师专业：</label>
+                    <input type="text" name="specialty" id="specialty" th:value="${teacherInfo.specialty}" required="required"/>
+                    <span >*请输入教师专业</span>
+                </div>
+                <div>
+                    <label for="birthday">出生日期：</label>
+                    <input type="date" name="birthday" id="birthday"  th:value="${teacherInfo.birthday}" pattern="YYYY/MM/dd"  required/>
+                    <span >*</span>
+                </div>
+                <div>
+                    <label >性别：</label>
+                    <input type="radio" name="gender" value="0" th:checked="${teacherInfo.gender}==0"/>男
+                    <input type="radio" name="gender" value="1" th:checked="${teacherInfo.gender}==1"/>女
+                </div>
+
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="userList.html">返回</a>-->
+                    <input type="submit" value="保存"/>
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+<footer class="footer" th:replace="school/main/public :: #public_footer"></footer>
+<!--
+	<script src="js/time.js"></script>
+	-->
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" id="public_head">
+    <meta charset="UTF-8">
+    <title>体育课 - 体育教学云平台</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public.css}"/>
+
+</head>
+<body>
+<!--头部-->
+    <header class="publicHeader" id="public_header">
+        <h1 class="publicHeader_h1">体育课后台管理系统</h1>
+        <div class="publicHeaderR">
+            <p><span>下午好！</span><span style="color: #fff21b" th:text="${session.loginUser}"></span> , 欢迎你！</p>
+        </div>
+    </header>
+<!--时间-->
+    <section class="publicTime" id="public_time">
+        <span id="time"></span>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            function setTime(){
+                var dt=new Date();
+                var arr_week=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+                var strWeek=arr_week[dt.getDay()];
+                var strHour=dt.getHours();
+                var strMinutes=dt.getMinutes();
+                var strSeconds=dt.getSeconds();
+                if (strMinutes<10) strMinutes="0"+strMinutes;
+                if (strSeconds<10) strSeconds="0"+strSeconds;
+                var strYear=dt.getFullYear()+"年";
+                var strMonth=(dt.getMonth()+1)+"月";
+                var strDay=dt.getDate()+"日";
+                <!--var strTime=strHour+":"+strMinutes+":"+strSeconds;-->
+                strTime=strHour+":"+strMinutes+":"+strSeconds;
+                time.innerHTML=strYear+strMonth+strDay+" "+strTime+"  "+strWeek;
+            }
+            setInterval("setTime()",1000);
+        </script>
+        <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+    </section>
+<!--主体内容-->
+    <section class="publicMian ">
+        <div class="left" id="public_left">
+            <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+            <nav>
+                <ul class="list">
+                    <li th:id="${activeUri=='course'?'active':''}"><a th:href="@{/course_list}">课程管理</a></li>
+                    <li th:id="${activeUri=='schedule'?'active':''}"><a th:href="@{/schedule_list}">课表管理</a></li>
+                    <li th:id="${activeUri=='teacher'?'active':''}"><a th:href="@{/teacher_list}">教师管理</a></li>
+                    <li th:id="${activeUri=='password'?'active':''}"><a th:href="@{/school_password}">密码修改</a></li>
+                    <li ><a th:href="@{/logout}">退出系统</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <footer class="footer" id="public_footer"><div style="text-align:center;">	<p><a href="www.cubeedu.com.cn" target="_blank"> 江苏正方体科教设备有限公司</a> 版权所有</p></div></footer>
+	<!--
+	<script src="js/time.js"></script>
+	-->
+</body>
+
+</html>

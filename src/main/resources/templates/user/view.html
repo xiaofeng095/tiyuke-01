@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="main/public :: #public_head">
+
+</head>
+<body>
+<!--头部-->
+<header class="publicHeader" th:replace="main/public :: #public_header">
+
+</header>
+<!--时间-->
+<section class="publicTime" th:replace="main/public :: #public_time">
+
+</section>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="left" th:replace="main/public :: #public_left(activeUri='user')">
+
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>用户管理页面 >> 用户信息查看页面</span>
+        </div>
+        <div class="providerView">
+            <p><strong>用户账号：</strong><span th:text="${userInfo.username}">admin</span></p>
+            <p><strong>真实姓名：</strong><span th:text="${userInfo.realname}">realname</span></p>
+            <p><strong>用户权限：</strong><span th:text="${userInfo.attribute}==0?'管理员':'维护'">attribute</span></p>
+            <a onclick="history.back(-1)" href="#">返回</a>
+        </div>
+    </div>
+</section>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
+<!--
+	<script src="js/time.js"></script>
+	-->
+
+</body>
+</html>

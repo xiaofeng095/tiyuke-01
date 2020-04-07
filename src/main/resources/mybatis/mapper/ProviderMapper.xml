@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chuangwen.tiyuke.mapper.ProviderMapper">
+    <select id="getAllProviders" resultType="com.chuangwen.tiyuke.entities.Provider">
+        select *
+        from provider_info
+        where 1=1
+        <if test="providerName != null and providerName != ''">
+        and providerName like '%${providerName}%'
+        </if>
+    </select>
+
+    <select id="getProviderById" resultType="com.chuangwen.tiyuke.entities.Provider">
+SELECT
+    `provider_info`.`pid`,
+    `provider_info`.`providerCode`,
+    `provider_info`.`providerName`,
+    `provider_info`.`providerDistrict`,
+    `provider_info`.`providerCity`,
+    `provider_info`.`people`,
+    `provider_info`.`phone`,
+    `provider_info`.`address`,
+    `provider_info`.`fax`,
+    `provider_info`.`describe`,
+    `provider_info`.`createDate`
+FROM `tiyuke`.`provider_info`
+where  `provider_info`.`pid`=#{pid}
+
+    </select>
+
+    <insert id="addProvider">
+        INSERT INTO `provider_info`
+        (
+        `providerCode`,
+        `providerName`,
+        `providerDistrict`,
+        `providerCity`,
+        `people`,
+        `phone`,
+        `address`,
+        `fax`,
+        `describe`,
+        `createDate`)
+        VALUES
+        (#{providerCode},
+        #{providerName},
+        #{providerDistrict},
+        #{providerCity},
+        #{people},
+        #{phone},
+        #{address},
+        #{fax},
+        #{describe},
+        now())
+    </insert>
+
+    <delete id="deleteProviderById">
+        delete from provider_info where pid = #{pid}
+    </delete>
+
+    <update id="updateProvider">
+        UPDATE `provider_info`
+        SET
+        `providerCode` = #{providerCode},
+        `providerName` =#{providerName},
+        `providerDistrict` = #{providerDistrict},
+        `providerCity` = #{providerCity},
+        `people` = #{people},
+        `phone` =  #{phone},
+        `address` = #{address},
+        `fax` = #{fax},
+        `describe` =  #{describe},
+        `createDate` = `createDate`
+        WHERE `pid` = #{pid}
+
+    </update>
+
+</mapper>

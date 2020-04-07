@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="main/public :: #public_head">
+</head>
+<body>
+<!--头部-->
+<header class="publicHeader" th:replace="main/public :: #public_header">
+
+</header>
+<!--时间-->
+<section class="publicTime" th:replace="main/public :: #public_time">
+
+</section>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="left" th:replace="main/public :: #public_left(activeUri='bill')">
+
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>数据推送页面 >> 数据添加页面</span>
+        </div>
+        <div class="providerAdd">
+            <form action="#">
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                <div>
+                    <span style="font-weight: normal;font-size: 15px;color: black">课件名称：</span>
+                    <input type="text" name="className" id="className" required/>
+                    <span >*</span>
+                </div>
+                <div>
+                    <span style="font-weight: normal;font-size: 15px;color: black">编辑人名：</span>
+                    <input type="text" th:value="${session.loginUser}" readonly name="classEditor" id="classEditor" required/>
+                    <span>*</span>
+                </div>
+                <div>
+                    <span style="font-weight: normal;font-size: 15px;color: black;">中考项目：</span>
+                    <div style="margin-left: 10px;line-height: 20px;padding-top: 6px;display: inline-block">
+                        <input type="radio" name="testItem" value="0" />是
+                        <input type="radio" name="testItem" value="1" checked/>否
+                    </div>
+                </div>
+                <h2>内容编辑</h2>
+                <hr>
+                <h2>1.动作要领</h2>
+                <table>
+                    <tr>
+                        <th>动作要领：</th>
+                        <td> <input type="text" name="action1" id="action1" placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                    </tr>
+                    <tr>
+                        <th>动作详解：</th>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                    </tr>
+                </table>
+                <br>
+                <hr>
+                <h2>2.个人练习</h2>
+                <table>
+                    <tr>
+                        <th>练习动作：</th>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                    </tr>
+                    <tr>
+                        <th>练习详解：</th>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                    </tr>
+                </table>
+                <br>
+                <hr>
+                <h2>3.团队练习</h2>
+                <table>
+                    <tr>
+                        <th>练习动作：</th>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                        <td> <input type="text" name="action1"  placeholder="填写标题" ><br><br></td>
+                    </tr>
+                    <tr>
+                        <th>练习详解：</th>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                    </tr>
+                </table>
+                <br>
+                <hr>
+                <h2>4.训练量</h2>
+                <table border="2" cellspacing="0" cellpadding="0" style="margin-left: 65px">
+                    <tr>
+                        <th>年级：</th>
+                        <th>1-2年纪</th>
+                        <th>3-4年纪</th>
+                        <th>5-6年纪</th>
+                    </tr>
+                    <tr>
+                        <th>训练动作：</th>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block;border: 0px" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block;border: 0px" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block;border: 0px" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>年级：</th>
+                        <th>7年纪</th>
+                        <th>8年纪</th>
+                        <th>9年纪</th>
+                    </tr>
+                    <tr>
+                        <th>训练动作：</th>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block;border: 0px" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block;border: 0px" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                        <td>  <textarea style="color: black; width: 260px; resize: none;font-size: 20px;display: inline-block;border: 0px" placeholder="编辑内容" rows="10" cols="5"></textarea></td>
+                    </tr>
+                </table>
+                <br>
+                <hr>
+                <h2>5.封面与视频上传</h2>
+                    <br />
+                <table  style="margin-left: 65px">
+                    <tr>
+                        <th>上传封面</th>
+                        <th>上传视频</th>
+                    </tr>
+                    <tr>
+                        <td style="width: 410px;">
+                            <img style="width:100%;height: 300px;" th:src="@{.../img/upload.jpg}" id="preview"><br></td>
+
+                        </td>
+                        <td style="width: 410px">
+                            <div id="videoarea" style="width:100%;height:300px;margin-left: 0;" ></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" class="file">选择图片
+                            <input type="file" name="file" onchange="imgPreview(this)">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="file">选择视频
+                                <input type="file" name="myfiles" id="myfiles" onchange="uploadVideo('myfiles',this)">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="billList.html">返回</a>-->
+                    <input type="button" value="保存"/>
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script  th:src="@{../js/index.js}"></script>
+<script  th:src="@{../js/imageUpload.js}"></script>
+<!--
+	<script src="js/time.js"></script>
+	-->
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="main/public :: #public_head">
+
+</head>
+<body>
+<!--头部-->
+<header class="publicHeader" th:replace="main/public :: #public_header">
+</header>
+<!--时间-->
+<section class="publicTime" th:replace="main/public :: #public_time">
+</section>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="left" th:replace="main/public :: #public_left(activeUri='user')">
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>用户管理页面 >> 用户添加页面</span>
+        </div>
+        <div class="providerAdd">
+            <form id="addUserForm" th:action="@{/user_add}" th:method="post">
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                <div>
+                    <label for="userName">用户账号：</label>
+                    <input type="text" name="username" id="userName" required="required"/>
+                    <span >*请输入登陆账号</span>
+                </div>
+                <div>
+                    <label for="realName">真实姓名：</label>
+                    <input type="text" name="realname" id="realName" required="required"/>
+                    <span >*请输入真实姓名</span>
+                </div>
+                <div>
+                    <label for="userpassword">用户密码：</label>
+                    <input type="text" name="password" id="userpassword" required="required"/>
+                    <span>*密码长度必须大于6位小于20位</span>
+
+                </div>
+                <div>
+                    <label >用户类别：</label>
+                    <div style="margin-left: 10px;line-height: 20px;padding-top: 6px">
+                    <input type="radio" name="attribute" value="0" />管理员
+                    <input type="radio" name="attribute" value="1" checked/>维护员
+                    </div>
+                </div>
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="userList.html">返回</a>-->
+                    <input type="submit" value="保存"/>
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
+<!--
+	<script src="js/time.js"></script>
+	-->
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+</body>
+</html>

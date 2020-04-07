@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="school/main/public :: #public_head">
+</head>
+<body>
+<!--头部-->
+    <header class="publicHeader" th:replace="school/main/public :: #public_header">
+    </header>
+<!--时间-->
+    <section class="publicTime" th:replace="school/main/public :: #public_time">
+    </section>
+<!--主体内容-->
+    <section class="publicMian ">
+        <div class="left" th:replace="school/main/public :: #public_left(activeUri='course')">
+        </div>
+        <div class="right">
+            <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>课程管理页面</span>
+            </div>
+            <form id="searchForm"  th:action="@{/course_list}" th:method="get">
+            <div class="search">
+                <span>课程搜索：</span>
+                <input type="text" th:value="${courseSearch}" name="courseName" placeholder="请输入课程名称"/>
+                <input type="button" value="查询" onclick="$('#searchForm').submit()"/>
+                <a th:href="@{/course_add}">添加课程</a>
+            </div>
+            </form>
+            <!--用户-->
+            <table class="providerTable" cellpadding="0" cellspacing="0">
+                <tr class="firstTr">
+                    <th width="30%">课程名称</th>
+                    <th width="30%">授课教师</th>
+                    <th width="30%">操作</th>
+                </tr>
+                <tr th:each="course : ${courseList}">
+                    <td th:text="${course.courseName}">课程名</td>
+                    <td th:text="${course.teacherName}">教师名</td>
+                    <td>
+                        <a th:href="@{/course_view/}+${course.courseName}+'?type=update'"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a th:attr="del_uri=@{/course_delete/}+${course.courseId}" class="delete" ><img src="../img/schu.png" alt="删除" title="删除"/></a>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </section>
+	<!--点击删除按钮后弹出的页面-->
+	<div class="zhezhao"></div>
+	<form method="post" id="deleteForm">
+		<input type="hidden" name="_method" value="delete">
+		<div class="remove" id="removeProv">
+		   <div class="removerChid">
+			   <h2>提示</h2>
+			   <div class="removeMain" >
+				   <p>你确定要删除吗？</p>
+				   <a href="#" id="yes">确定</a>
+				   <a href="#" id="no">取消</a>
+			   </div>
+		   </div>
+		</div>
+	</form>
+
+<footer class="footer" th:replace="school/main/public :: #public_footer"></footer>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script  th:src="@{../js/index.js}"></script>
+<!--
+	<script src="js/time.js"></script>
+	-->
+</body>
+</html>

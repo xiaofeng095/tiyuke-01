@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="main/public :: #public_head">
+
+</head>
+<body>
+<!--头部-->
+<header class="publicHeader" th:replace="main/public :: #public_header">
+
+</header>
+<!--时间-->
+<section class="publicTime" th:replace="main/public :: #public_time">
+</section>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="left" th:replace="main/public :: #public_left(activeUri='provider')">
+
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>学校管理页面 >> 学校信息修改页</span>
+        </div>
+        <div class="providerAdd">
+            <form id="updateForm" th:action="@{/provider_update}" method="post">
+                <input type="hidden" name="_method" value="put">
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                <div class="">
+                    <label for="providerName">学校名称：</label>
+                    <input type="text" name="providerName" id="providerName" th:value="${providerInfo.providerName}" placeholder="请填写学校名称" required/>
+                    <input type="hidden" name="pid" th:value="${providerInfo.pid}">
+                    <input type="hidden" name="createDate" th:value="${providerInfo.createDate}">
+                    <span >*</span>
+                </div>
+                <div class="">
+                    <label for="providerCode">学校编码：</label>
+                    <input type="text" name="providerCode" id="providerCode" th:value="${providerInfo.providerCode}" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" placeholder="请填写学校编码" required/>
+                    <span >*</span>
+                </div>
+                <div>
+                    <label for="providerDistrict">学校地区：</label>
+                    <select style="width: 128px" id="providerDistrict" name="providerDistrict" required>
+                        <option selected th:text="${providerInfo.providerDistrict}">-请选择-</option>
+                        <option>北京市</option>
+                        <option>上海市</option>
+                        <option>天津市</option>
+                        <option>重庆市</option>
+                        <option>河北省</option>
+                        <option>山西省</option>
+                        <option>内蒙古自治区</option>
+                        <option>辽宁省</option>
+                        <option>吉林省</option>
+                        <option>黑龙江省</option>
+                        <option>江苏省</option>
+                        <option>浙江省</option>
+                        <option>安徽省</option>
+                        <option>福建省</option>
+                        <option>江西省</option>
+                        <option>山东省</option>
+                        <option>河南省</option>
+                        <option>湖北省</option>
+                        <option>湖南省</option>
+                        <option>广东省</option>
+                        <option>广西壮族自治区</option>
+                        <option>海南省</option>
+                        <option>四川省</option>
+                        <option>贵州省</option>
+                        <option>云南省</option>
+                        <option>西藏自治区</option>
+                        <option>陕西省</option>
+                        <option>甘肃省</option>
+                        <option>宁夏回族自治区</option>
+                        <option>青海省</option>
+                        <option>新疆维吾尔族自治区</option>
+                        <option>香港特别行政区</option>
+                        <option>澳门特别行政区</option>
+                        <option>台湾省</option>
+                    </select>
+                    <select style="width: 128px" id="providerCity" name="providerCity" required>
+                        <option th:text="${providerInfo.providerCity}">城市</option>
+                    </select>
+                    <span>*</span>
+
+                </div>
+                <div>
+                    <label for="people">联系人：</label>
+                    <input type="text" name="people" id="people" th:value="${providerInfo.people}" placeholder="姓名" required/>
+                    <span>*</span>
+
+                </div>
+                <div>
+                    <label for="phone">联系电话：</label>
+                    <input type="text" name="phone" id="phone" th:value="${providerInfo.phone}" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength=11 minlength="11" placeholder="号码" required/>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="address">联系地址：</label>
+                    <input type="text" name="address" id="address" th:value="${providerInfo.address}" placeholder="地址" required/>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="fax">传真：</label>
+                    <input type="text" name="fax" id="fax" th:value="${providerInfo.fax}" onkeyup="value=value.replace(/[^\d\-\d]/g,'')" maxlength=20 placeholder="传真" required/>
+                    <span></span>
+
+                </div>
+                <div>
+                    <label for="describe">描述：</label>
+                    <input type="text" name="describe" id="describe" th:value="${providerInfo.describe}" placeholder="描述" required/>
+                    <span></span>
+
+                </div>
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="providerList.html">返回</a>-->
+                    <input type="submit" value="保存"/>
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script th:src="@{../js/city.js}"></script>
+<!--
+	<script src="js/time.js"></script>
+	-->
+</body>
+</html>

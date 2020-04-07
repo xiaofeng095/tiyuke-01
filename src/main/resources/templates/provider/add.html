@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="main/public :: #public_head">
+
+</head>
+<body>
+<!--头部-->
+<header class="publicHeader" th:replace="main/public :: #public_header">
+
+</header>
+<!--时间-->
+<section class="publicTime" th:replace="main/public :: #public_time">
+
+</section>
+<!--主体内容-->
+<section class="publicMian ">
+    <div class="left" th:replace="main/public :: #public_left(activeUri='provider')">
+
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>学校管理页面 >> 学校添加页面</span>
+        </div>
+        <div class="providerAdd">
+            <form id="addProviderForm" th:action="@{/provider_add}" th:method="post">
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                <div class="">
+                    <label for="providerName">学校名称：</label>
+                    <input type="text" name="providerName" id="providerName" required/>
+                    <span >*请输入学校名称</span>
+                </div>
+                <div class="">
+                    <label for="providerCode">学校编码：</label>
+                    <input type="text" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" name="providerCode" id="providerCode" required/>
+                    <span >*请输入地区+学校名称首字母</span>
+                </div>
+                <div class="">
+                    <label for="providerDistrict">所在地区：</label>
+                    <select style="width: 128px" id="providerDistrict" name="providerDistrict" required>
+                        <option value="省份">-请选择-</option>
+                        <option>北京市</option>
+                        <option>上海市</option>
+                        <option>天津市</option>
+                        <option>重庆市</option>
+                        <option>河北省</option>
+                        <option>山西省</option>
+                        <option>内蒙古自治区</option>
+                        <option>辽宁省</option>
+                        <option>吉林省</option>
+                        <option>黑龙江省</option>
+                        <option>江苏省</option>
+                        <option>浙江省</option>
+                        <option>安徽省</option>
+                        <option>福建省</option>
+                        <option>江西省</option>
+                        <option>山东省</option>
+                        <option>河南省</option>
+                        <option>湖北省</option>
+                        <option>湖南省</option>
+                        <option>广东省</option>
+                        <option>广西壮族自治区</option>
+                        <option>海南省</option>
+                        <option>四川省</option>
+                        <option>贵州省</option>
+                        <option>云南省</option>
+                        <option>西藏自治区</option>
+                        <option>陕西省</option>
+                        <option>甘肃省</option>
+                        <option>宁夏回族自治区</option>
+                        <option>青海省</option>
+                        <option>新疆维吾尔族自治区</option>
+                        <option>香港特别行政区</option>
+                        <option>澳门特别行政区</option>
+                        <option>台湾省</option>
+                    </select>
+                    <select style="width: 128px" id="providerCity" name="providerCity" required>
+                        <option value="">城市</option>
+                    </select>
+                    <span >*请选择学校所在地区</span>
+                </div>
+                <div>
+                    <label for="people">联系人：</label>
+                    <input type="text" name="people" id="people" required/>
+                    <span>*请输入联系人</span>
+
+                </div>
+                <div>
+                    <label for="phone">联系电话：</label>
+                    <input type="text" name="phone" id="phone" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength=11 minlength="11" required/>
+                    <span>*请输入联系电话</span>
+                </div>
+                <div>
+                    <label for="address">联系地址：</label>
+                    <input type="text" name="address" id="address" required/>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="fax">传真：</label>
+                    <input type="text" name="fax" id="fax" onkeyup="value=value.replace(/[^\d\-\d]/g,'')" maxlength=20/>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="describe">描述：</label>
+                    <input type="text" name="describe" id="describe"/>
+                </div>
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="providerList.html">返回</a>-->
+                    <input type="submit" value="保存"/>
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
+	<script src="js/city.js"></script>
+</body>
+</html>
